@@ -27,9 +27,6 @@ docker pull markuslindenberg/nginx_request_exporter
 公共镜像
 docker run -d -p 9147:9147 -p 9514:9514/udp    markuslindenberg/nginx_request_exporter  -nginx.syslog-address=":9514"
 
-自定义镜像
-docker run -d -p 9147:9147 -p 9514:9514/udp      reg.chehejia.com/sre/nginx_request_exporter:v1
-
 ```
 
 ## Configuration
@@ -64,6 +61,7 @@ Currently nginx_request_exporter has to be restarted when the log format is chan
 
 
 push
+
 ```nashorn js
 create a new repository on the command line
 echo "# nginx_request_exporter" >> README.md
