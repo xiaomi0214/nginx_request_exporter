@@ -105,6 +105,7 @@ func main() {
 	go func() {
 		for part := range channel {
 			log.Printf("part:%s ", part)
+			//part:map[client:172.21.244.36:59911 content:time:0.000 status=304  method="GET" upstream="-" facility:%!s(int=23) hostname:sre-file-ontest-1-c2zzm priority:%!s(int=190) severity:%!s(int=6) tag:nginx timestamp:2024-02-20 09:55:28 +0000 UTC tls_peer:]
 			syslogMessages.Inc()
 			msgs++
 			tag, _ := part["tag"].(string)
@@ -124,6 +125,7 @@ func main() {
 
 			content, _ := part["content"].(string)
 			log.Printf("content:%s", content)
+			//content:time:0.000 status=304  method="GET" upstream="-"
 			if content == "" {
 				log.Print("Ignoring empty syslog message")
 
@@ -134,7 +136,7 @@ func main() {
 
 			metrics, labels, err := parseMessage(content)
 			log.Printf("metrics:%s  labels:%s", metrics, labels)
-
+			//metrics:[{time %!s(float64=0)}]  labels:&{[status method upstream] [304 GET -]}
 			if err != nil {
 				//log.Error(err)
 				log.Fatal(err)
