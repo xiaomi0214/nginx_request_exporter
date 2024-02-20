@@ -26,7 +26,6 @@ docker pull markuslindenberg/nginx_request_exporter
 
 公共镜像
 docker run -d -p 9147:9147 -p 9514:9514/udp    markuslindenberg/nginx_request_exporter  -nginx.syslog-address=":9514"
-
 ```
 
 ## Configuration
